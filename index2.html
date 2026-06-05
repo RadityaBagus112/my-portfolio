@@ -9,606 +9,3478 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" href="favicon.png" />
+    <link
+  rel="canonical"
+  href="https://domainkamu.com"
+/>
+
+    <meta
+  name="description"
+  content="Raditya Bagus Prasetiyo - Web Developer Indonesia. Membangun website modern, responsif, cepat, dan profesional untuk bisnis, UMKM, dan startup."
+/>
+
+<meta
+  name="keywords"
+  content="Web Developer Indonesia, Frontend Developer, Freelancer Website, Jasa Website, Web Design"
+/>
+
+<meta
+  name="author"
+  content="Raditya Bagus Prasetiyo"
+/>
+
+<meta name="robots" content="index, follow" />
+
+
+
+<meta property="og:title" content="Raditya | Web Developer" />
+
+<meta
+  property="og:description"
+  content="Modern Website & Digital Solutions"
+/>
+
+<meta
+  property="og:image"
+  content="https://domainkamu.com/preview.jpg"
+/>
+
+<meta
+  property="og:url"
+  content="https://domainkamu.com"
+/>
+
+<meta property="og:type" content="website" />
+
+
+
     <style>
+      /* =========================
+   GLOBAL
+========================= */
+
       html {
         scroll-behavior: smooth;
       }
-      /* Tambahkan CSS untuk animasi menu */
+
+      body {
+        font-family: 'Poppins', sans-serif;
+        overflow-x: hidden;
+        background: #fefefe;
+        color: #1f2937;
+      }
+
+      ::selection {
+        background: #22d3ee;
+        color: white;
+      }
+/* ==================================
+   PREMIUM NAVBAR FINAL
+================================== */
+
+#navbar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+
+z-index:1000;
+
+padding:18px 0;
+
+transition:.35s ease;
+}
+
+/* SCROLL */
+
+#navbar.navbar-scrolled{
+
+background:rgba(255,255,255,.9);
+
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
+
+box-shadow:
+0 10px 30px rgba(0,0,0,.08);
+
+border-bottom:
+1px solid rgba(255,255,255,.2);
+}
+
+/* CONTAINER */
+
+.nav-container{
+
+max-width:1280px;
+
+margin:auto;
+
+padding:0 24px;
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+/* LOGO */
+
+.logo{
+
+font-size:2rem;
+
+font-weight:800;
+
+letter-spacing:-1px;
+
+color:white;
+
+transition:.3s;
+}
+
+.logo span{
+color:#7dd3fc;
+}
+
+.navbar-scrolled .logo{
+color:#0f172a;
+}
+
+/* MENU */
+
+.nav-menu{
+
+display:flex;
+align-items:center;
+
+gap:38px;
+}
+
+.nav-link{
+
+position:relative;
+
+font-size:15px;
+
+font-weight:600;
+
+color:rgba(255,255,255,.9);
+
+transition:.3s;
+}
+
+.nav-link:hover{
+color:white;
+}
+
+.navbar-scrolled .nav-link{
+color:#475569;
+}
+
+.navbar-scrolled .nav-link:hover{
+color:#2563eb;
+}
+
+.nav-link::after{
+
+content:"";
+
+position:absolute;
+
+left:0;
+bottom:-8px;
+
+width:0;
+height:3px;
+
+border-radius:999px;
+
+background:
+linear-gradient(
+90deg,
+#2563eb,
+#22d3ee
+);
+
+transition:.3s;
+}
+
+.nav-link:hover::after{
+width:100%;
+}
+
+.nav-link.active::after{
+width:100%;
+}
+
+.navbar-scrolled .nav-link.active{
+color:#2563eb;
+}
+
+/* BUTTON */
+
+.nav-btn{
+
+padding:14px 28px;
+
+border-radius:999px;
+
+font-weight:600;
+
+color:white;
+
+background:
+linear-gradient(
+135deg,
+#2563eb,
+#22d3ee
+);
+
+box-shadow:
+0 12px 30px rgba(37,99,235,.25);
+
+transition:.3s;
+}
+
+.nav-btn:hover{
+
+transform:translateY(-3px);
+
+box-shadow:
+0 18px 35px rgba(37,99,235,.35);
+}
+
+/* MOBILE TOGGLE */
+
+.mobile-toggle{
+
+display:none;
+
+background:none;
+border:none;
+
+font-size:28px;
+
+cursor:pointer;
+
+color:white;
+}
+
+/* MOBILE MENU */
+
+.mobile-menu{
+
+position:fixed;
+
+top:76px;
+left:0;
+
+width:100%;
+
+padding:25px;
+
+background:white;
+
+display:flex;
+flex-direction:column;
+
+gap:18px;
+
+box-shadow:
+0 15px 40px rgba(0,0,0,.08);
+
+z-index:999;
+
+opacity:0;
+visibility:hidden;
+
+transform:translateY(-20px);
+
+transition:.35s;
+}
+
+.mobile-menu.active{
+
+opacity:1;
+visibility:visible;
+
+transform:translateY(0);
+}
+
+.mobile-menu a{
+
+padding:12px 0;
+
+font-weight:600;
+
+color:#1e293b;
+
+border-bottom:
+1px solid #f1f5f9;
+}
+
+.mobile-talk-btn{
+
+padding:14px;
+
+border-radius:14px;
+
+text-align:center;
+
+color:white !important;
+
+background:
+linear-gradient(
+135deg,
+#2563eb,
+#22d3ee
+);
+
+border:none !important;
+}
+
+/* DESKTOP */
+
+@media(min-width:769px){
+
+.mobile-menu{
+display:none;
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+#navbar{
+padding:14px 0;
+}
+
+.nav-container{
+padding:0 20px;
+}
+
+.logo{
+font-size:1.8rem;
+}
+
+.nav-menu{
+display:none;
+}
+
+.nav-btn{
+display:none;
+}
+
+.mobile-toggle{
+display:block;
+}
+
+.navbar-scrolled .mobile-toggle{
+color:#0f172a;
+}
+
+}
+
+
+      /* =========================
+   HERO BACKGROUND
+========================= */
+
+      .gradient-bg {
+        position: relative;
+        overflow: hidden;
+
+        background:
+          radial-gradient(
+            circle at 20% 20%,
+            rgba(255, 255, 255, 0.15),
+            transparent 25%
+          ),
+          radial-gradient(
+            circle at 80% 70%,
+            rgba(255, 255, 255, 0.12),
+            transparent 25%
+          ),
+          linear-gradient(135deg, #1d4ed8 0%, #2563eb 45%, #22d3ee 100%);
+      }
+
+
+      .gradient-bg::before {
+        content: '';
+        position: absolute;
+
+        width: 500px;
+        height: 500px;
+
+        top: -120px;
+        right: -120px;
+
+        border-radius: 50%;
+
+        background: rgba(255, 255, 255, 0.08);
+
+        filter: blur(120px);
+
+        animation: blob1 15s ease-in-out infinite;
+      }
+
+      .gradient-bg::after {
+        content: '';
+        position: absolute;
+
+        width: 400px;
+        height: 400px;
+
+        bottom: -100px;
+        left: -100px;
+
+        border-radius: 50%;
+
+        background: rgba(255, 255, 255, 0.06);
+
+        filter: blur(100px);
+
+        animation: blob2 20s ease-in-out infinite;
+      }
+      /* =========================
+   GLASS EFFECT
+========================= */
+
+      .glass {
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+      }
+
+      /* =========================
+   HERO IMAGE
+========================= */
+
+      .hero-image:hover {
+        transform: scale(1.03);
+      }
+
+      /* =========================
+   PARTICLE
+========================= */
+
+      .particle {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.25);
+        filter: blur(10px);
+      }
+
+      .particle-1 {
+        width: 20px;
+        height: 20px;
+        top: 20%;
+        left: 15%;
+
+        animation: floatParticle 12s infinite linear;
+      }
+
+      .particle-2 {
+        width: 15px;
+        height: 15px;
+        top: 60%;
+        right: 10%;
+
+        animation: floatParticle 15s infinite linear;
+      }
+
+      .particle-3 {
+        width: 10px;
+        height: 10px;
+        top: 40%;
+        right: 30%;
+
+        animation: floatParticle 18s infinite linear;
+      }
+
+      @keyframes floatParticle {
+        0% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-50px);
+        }
+
+        100% {
+          transform: translateY(0);
+        }
+      }
+
+      /* =========================
+   HERO MOBILE
+========================= */
+
+@media (max-width:768px){
+
+.hero-title{
+
+font-size:3rem !important;
+line-height:1.1;
+
+}
+
+.hero-subtitle{
+
+font-size:1.7rem !important;
+}
+
+.hero-description{
+
+font-size:1rem;
+line-height:1.8;
+
+max-width:100%;
+}
+
+.hero-buttons{
+
+display:flex;
+flex-direction:column;
+
+gap:15px;
+}
+
+.hero-buttons a{
+
+width:100%;
+text-align:center;
+}
+
+.hero-social{
+
+justify-content:center;
+}
+
+.hero-image{
+
+margin-bottom:80px !important;
+}
+
+}
+
+      /* =========================
+   FLOATING CARDS
+========================= */
+
+      .float-card {
+        animation: floatCard 5s ease-in-out infinite;
+      }
+
+      .float-card-delay {
+        animation: floatCard 4s ease-in-out infinite;
+      }
+
+      .float-card-slow {
+        animation: floatCard 4s ease-in-out infinite;
+      }
+
+      @media(max-width:1024px){
+
+.float-card,
+.float-card-delay,
+.float-card-slow{
+
+display:none !important;
+
+}
+
+}
+      /* =========================
+   BUTTON
+========================= */
+
+      .social-btn{
+
+width:56px;
+height:56px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border-radius:50%;
+
+font-size:24px;
+
+transition:.3s;
+}
+
+      .social-btn:hover {
+        transform: translateY(-5px);
+
+        background: white;
+
+        color: #2563eb;
+
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .github{
+background:#1f2937;
+color:white;
+}
+
+.instagram{
+background:linear-gradient(
+45deg,
+#f58529,
+#dd2a7b,
+#8134af,
+#515bd4
+);
+color:white;
+}
+
+.linkedin{
+background:#0077b5;
+color:white;
+}
+
+.social-btn:hover{
+transform:translateY(-6px) scale(1.05);
+}
+
+      /* =========================
+   SKILL CARD
+========================= */
+
+      .skill-card {
+        background: white;
+        border-radius: 20px;
+        padding: 1.5rem;
+        text-align: center;
+
+        transition: 0.35s ease;
+
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      }
+
+      .skill-card:hover {
+        transform: translateY(-10px);
+
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      }
+
+      /* =========================
+   SERVICE CARD
+========================= */
+
+      .service-card {
+        background: white;
+        border-radius: 20px;
+
+        transition: 0.35s ease;
+
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      }
+
+      /* =========================
+   PROJECT CARD
+========================= */
+
+      .project-card {
+        border-radius: 20px;
+        overflow: hidden;
+
+        transition: 0.35s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+      }
+
+      .project-card img {
+        transition: 0.5s ease;
+      }
+
+      .project-card:hover img {
+        transform: scale(1.05);
+      }
+
+      /* =========================
+   ABOUT IMAGE
+========================= */
+
+      .about-image {
+        transition: 0.4s ease;
+      }
+
+      .about-image:hover {
+        transform: scale(1.03);
+      }
+
+      /* =========================
+   MOBILE MENU
+========================= */
+
       .mobile-menu {
-        transition: all 0.3s ease-in-out;
         opacity: 0;
         transform: translateY(-10px);
+
         pointer-events: none;
+
+        transition: 0.3s ease;
       }
 
       .mobile-menu.active {
         opacity: 1;
         transform: translateY(0);
+
         pointer-events: auto;
       }
 
-      /* CSS untuk mengatur posisi menu mobile */
-      .mobile-menu-container {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background-color: white;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      /* =========================
+   ANIMATION
+========================= */
+
+      @keyframes heroFloat {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-12px);
+        }
       }
+
+      @keyframes floatCard {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes blob1 {
+        0%,
+        100% {
+          transform: translate(0, 0);
+        }
+
+        50% {
+          transform: translate(-30px, 20px);
+        }
+      }
+
+      @keyframes blob2 {
+        0%,
+        100% {
+          transform: translate(0, 0);
+        }
+
+        50% {
+          transform: translate(30px, -20px);
+        }
+      }
+
+/* =========================
+   HERO ANIMATION
+========================= */
+
+.hero-title{
+opacity:0;
+transform:translateY(40px);
+animation:heroFadeUp .8s ease forwards;
+}
+
+.hero-subtitle{
+opacity:0;
+transform:translateY(40px);
+animation:heroFadeUp .8s ease forwards;
+animation-delay:.3s;
+}
+
+.hero-description{
+opacity:0;
+transform:translateY(40px);
+animation:heroFadeUp .8s ease forwards;
+animation-delay:.6s;
+}
+
+.hero-buttons{
+opacity:0;
+transform:translateY(40px);
+animation:heroFadeUp .8s ease forwards;
+animation-delay:.9s;
+}
+
+.hero-social{
+opacity:0;
+transform:translateY(40px);
+animation:heroFadeUp .8s ease forwards;
+animation-delay:1.2s;
+}
+
+.hero-image{
+animation:heroFloat 6s ease-in-out infinite;
+}
+
+@keyframes heroFadeUp{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+      /* =========================
+   SECTION TITLE
+========================= */
+
+      /* =========================
+   RESPONSIVE
+========================= */
+
+      @media (max-width: 1024px) {
+        .animate-float,
+        .animate-float-delay,
+        .animate-float-slow {
+          display: none;
+        }
+      }
+
+
+      /* =========================
+   HERO FINAL FIX
+========================= */
+
+.hero-title{
+  font-size:72px;
+  font-weight:800;
+  line-height:1.1;
+  color:white;
+  margin-top:24px;
+}
+
+.hero-subtitle{
+  font-size:30px;
+  font-weight:600;
+  color:#dbeafe;
+  min-height:48px;
+  margin-top:16px;
+}
+
+.hero-description{
+  margin-top:24px;
+  max-width:600px;
+  color:#dbeafe;
+  line-height:1.8;
+  font-size:18px;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:16px;
+  margin-top:32px;
+}
+
+.hero-social{
+  display:flex;
+  gap:16px;
+  margin-top:32px;
+}
+
+.gradient-bg{
+  min-height:100vh;
+}
+
+@media(max-width:768px){
+
+  .hero-title{
+    font-size:48px;
+  }
+
+  .hero-subtitle{
+    font-size:22px;
+  }
+
+  .hero-description{
+    font-size:16px;
+  }
+
+  .hero-buttons{
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+
+  .hero-social{
+    justify-content:center;
+  }
+
+}
+
+
+/* =========================
+   PREMIUM HERO UPGRADE
+========================= */
+
+.hero-pattern{
+position:absolute;
+right:0;
+top:0;
+width:50%;
+height:100%;
+
+background-image:
+radial-gradient(
+rgba(255,255,255,.08) 2px,
+transparent 2px
+);
+
+background-size:30px 30px;
+
+opacity:.4;
+pointer-events:none;
+}
+
+.hero-circle{
+position:absolute;
+border-radius:9999px;
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(10px);
+}
+
+.hero-circle-1{
+width:130px;
+height:130px;
+
+right:18%;
+top:15%;
+
+animation:floatCard 8s infinite ease-in-out;
+}
+
+.hero-circle-2{
+width:70px;
+height:70px;
+
+right:42%;
+bottom:35%;
+
+animation:floatCard 6s infinite ease-in-out;
+}
+
+/* =========================
+   ABOUT SECTION
+========================= */
+
+.about-section{
+position:relative;
+padding:120px 0;
+background:
+linear-gradient(
+180deg,
+#ffffff 0%,
+#f8fbff 100%
+);
+overflow:hidden;
+}
+
+.about-bg-circle{
+position:absolute;
+border-radius:999px;
+filter:blur(120px);
+pointer-events:none;
+opacity:.08;
+}
+
+.about-bg-1{
+width:350px;
+height:350px;
+background:#2563eb;
+top:0;
+left:-150px;
+}
+
+.about-bg-2{
+width:300px;
+height:300px;
+background:#06b6d4;
+bottom:0;
+right:-150px;
+}
+
+.section-tag{
+display:inline-block;
+font-size:.85rem;
+font-weight:700;
+letter-spacing:3px;
+color:#2563eb;
+margin-bottom:15px;
+}
+
+.section-title{
+font-size:3rem;
+font-weight:800;
+color:#111827;
+line-height:1.2;
+}
+
+.section-title span{
+color:#2563eb;
+}
+
+.section-line{
+width:80px;
+height:4px;
+background:#2563eb;
+margin:20px auto 0;
+border-radius:999px;
+}
+
+/* IMAGE */
+
+.about-image-container{
+position:relative;
+}
+
+
+.about-image:hover{
+transform:scale(1.03);
+}
+
+.about-badge{
+position:absolute;
+top:30px;
+right:-40px;
+background:white;
+padding:14px 22px;
+border-radius:16px;
+font-weight:600;
+box-shadow:
+0 15px 40px rgba(0,0,0,.12);
+z-index:10;
+
+
+}
+
+@media(max-width:768px){
+
+.about-badge,
+.about-card,
+.about-floating{
+
+display:none !important;
+
+}
+
+}
+
+/* TEXT */
+
+.about-heading{
+font-size:2.5rem;
+font-weight:800;
+line-height:1.3;
+margin-bottom:25px;
+color:#111827;
+}
+
+.about-heading span{
+color:#2563eb;
+}
+
+.about-text{
+font-size:1.1rem;
+line-height:1.9;
+color:#6b7280;
+margin-bottom:20px;
+}
+
+/* SKILL */
+
+.about-skill-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+margin-top:35px;
+margin-bottom:35px;
+}
+
+.about-skill-card{
+background:white;
+padding:18px;
+border-radius:18px;
+display:flex;
+align-items:center;
+gap:12px;
+box-shadow:
+0 10px 30px rgba(0,0,0,.06);
+transition:.3s;
+}
+
+.about-skill-card:hover{
+transform:translateY(-5px);
+box-shadow:
+0 20px 40px rgba(0,0,0,.10);
+}
+
+.about-skill-card i{
+font-size:20px;
+color:#2563eb;
+}
+
+/* INFO */
+
+.about-info-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+margin-bottom:35px;
+}
+
+.about-info-card{
+background:white;
+padding:20px;
+border-radius:18px;
+box-shadow:
+0 10px 30px rgba(0,0,0,.06);
+}
+
+.about-info-card h4{
+font-weight:700;
+color:#2563eb;
+margin-bottom:5px;
+}
+
+.about-info-card p{
+color:#6b7280;
+}
+
+/* BUTTON */
+
+.about-btn{
+display:inline-block;
+padding:15px 28px;
+background:#2563eb;
+color:white;
+font-weight:600;
+border-radius:14px;
+transition:.3s;
+}
+
+.about-btn:hover{
+background:#1d4ed8;
+transform:translateY(-3px);
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.section-title{
+font-size:2rem;
+}
+
+.about-heading{
+font-size:1.8rem;
+text-align:center;
+}
+
+.about-text{
+text-align:center;
+}
+
+
+
+.about-badge{
+right:0;
+top:-10px;
+font-size:.85rem;
+}
+
+.about-info-grid,
+.about-skill-grid{
+grid-template-columns:1fr;
+}
+
+.about-btn{
+width:100%;
+text-align:center;
+}
+
+}
+
+/* =========================
+   ABOUT IMAGE UPGRADE
+========================= */
+
+.about-image-container{
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.about-image{
+position:relative;
+width:360px;
+height:360px;
+object-fit:cover;
+border-radius:50%;
+border:10px solid white;
+
+box-shadow:
+0 25px 60px rgba(0,0,0,.15);
+
+z-index:5;
+
+animation:
+aboutFloat 6s ease-in-out infinite;
+}
+
+.about-glow{
+position:absolute;
+width:420px;
+height:420px;
+
+background:
+linear-gradient(
+135deg,
+#2563eb,
+#22d3ee
+);
+
+filter:blur(120px);
+opacity:.18;
+
+border-radius:50%;
+}
+
+/* =========================
+   ABOUT MOBILE
+========================= */
+
+@media(max-width:768px){
+
+.about-content{
+
+text-align:center;
+}
+
+.about-stats{
+
+grid-template-columns:1fr;
+}
+
+}
+
+/* FLOATING CARD */
+
+.about-floating-card{
+position:absolute;
+
+background:white;
+
+padding:12px 18px;
+
+border-radius:16px;
+
+display:flex;
+align-items:center;
+gap:10px;
+
+font-weight:600;
+
+box-shadow:
+0 15px 40px rgba(0,0,0,.10);
+
+z-index:10;
+}
+
+.about-floating-card i{
+color:#2563eb;
+}
+
+/* POSISI */
+
+.about-card-left{
+left:-40px;
+bottom:80px;
+
+animation:
+floatCard 5s ease-in-out infinite;
+}
+
+.about-card-right{
+right:-40px;
+bottom:120px;
+
+animation:
+floatCard 6s ease-in-out infinite;
+}
+
+.about-card-top{
+top:70px;
+right:-20px;
+
+animation:
+floatCard 7s ease-in-out infinite;
+}
+
+/* BADGE */
+
+.about-badge{
+position:absolute;
+
+top:20px;
+left:-30px;
+
+background:white;
+
+padding:14px 22px;
+
+border-radius:16px;
+
+font-weight:600;
+
+box-shadow:
+0 15px 40px rgba(0,0,0,.10);
+
+z-index:20;
+}
+
+
+/* =========================
+   PORTFOLIO SECTION
+========================= */
+
+.portfolio-section{
+position:relative;
+padding:120px 0;
+background:
+linear-gradient(
+180deg,
+#f8fbff 0%,
+#eef6ff 100%
+);
+overflow:hidden;
+}
+
+.portfolio-bg{
+position:absolute;
+border-radius:999px;
+filter:blur(120px);
+opacity:.08;
+pointer-events:none;
+}
+
+.portfolio-bg-1{
+width:350px;
+height:350px;
+background:#2563eb;
+top:0;
+left:-150px;
+}
+
+.portfolio-bg-2{
+width:300px;
+height:300px;
+background:#06b6d4;
+bottom:0;
+right:-150px;
+}
+
+.portfolio-tag{
+display:inline-block;
+font-size:.85rem;
+font-weight:700;
+letter-spacing:3px;
+color:#2563eb;
+margin-bottom:15px;
+}
+
+.portfolio-title{
+font-size:3rem;
+font-weight:800;
+color:#111827;
+line-height:1.2;
+}
+
+.portfolio-title span{
+color:#2563eb;
+}
+
+.portfolio-subtitle{
+max-width:700px;
+margin:20px auto 0;
+font-size:1.1rem;
+color:#6b7280;
+line-height:1.8;
+}
+
+.portfolio-line{
+width:80px;
+height:4px;
+background:#2563eb;
+margin:25px auto 0;
+border-radius:999px;
+}
+
+/* CARD */
+
+.portfolio-card{
+background:white;
+border-radius:24px;
+overflow:hidden;
+
+box-shadow:
+0 10px 30px rgba(0,0,0,.06);
+
+transition:.4s ease;
+}
+
+.portfolio-card:hover{
+
+transform:
+translateY(-10px);
+
+box-shadow:
+0 25px 60px rgba(0,0,0,.12);
+}
+
+.portfolio-image{
+overflow:hidden;
+}
+
+.portfolio-image img{
+width:100%;
+height:240px;
+object-fit:cover;
+
+transition:.5s ease;
+}
+
+.portfolio-card:hover img{
+transform:scale(1.06);
+}
+
+.portfolio-content{
+padding:24px;
+}
+
+.portfolio-content h3{
+font-size:1.4rem;
+font-weight:700;
+margin-bottom:12px;
+color:#111827;
+}
+
+.portfolio-content p{
+color:#6b7280;
+line-height:1.8;
+margin-bottom:20px;
+}
+
+/* TECH */
+
+.portfolio-tech{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-bottom:24px;
+}
+
+.portfolio-tech span{
+padding:8px 14px;
+border-radius:999px;
+
+background:#eff6ff;
+color:#2563eb;
+
+font-size:.85rem;
+font-weight:600;
+}
+
+/* BUTTON */
+
+.portfolio-btn{
+display:inline-flex;
+align-items:center;
+gap:10px;
+
+font-weight:600;
+color:#2563eb;
+
+transition:.3s;
+}
+
+.portfolio-btn:hover{
+gap:15px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.portfolio-title{
+font-size:2rem;
+}
+
+.portfolio-subtitle{
+font-size:1rem;
+}
+
+}
+
+
+/* =========================
+   PORTFOLIO MOBILE
+========================= */
+
+@media(max-width:768px){
+
+.portfolio-card{
+
+margin-bottom:20px;
+}
+
+
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-section{
+padding:120px 0;
+background:
+linear-gradient(
+180deg,
+#ffffff 0%,
+#f8fbff 100%
+);
+}
+
+.contact-tag{
+display:inline-block;
+
+font-size:.85rem;
+font-weight:700;
+
+letter-spacing:3px;
+
+color:#2563eb;
+
+margin-bottom:15px;
+}
+
+.contact-title{
+font-size:3rem;
+font-weight:800;
+
+color:#111827;
+}
+
+.contact-title span{
+color:#2563eb;
+}
+
+.contact-subtitle{
+
+max-width:650px;
+
+margin:20px auto;
+
+line-height:1.8;
+
+color:#6b7280;
+}
+
+.contact-line{
+
+width:80px;
+height:4px;
+
+background:#2563eb;
+
+margin:auto;
+
+border-radius:999px;
+}
+
+/* GRID */
+
+.contact-wrapper{
+
+display:grid;
+
+grid-template-columns:
+1fr 1.2fr;
+
+gap:40px;
+
+align-items:start;
+}
+
+/* INFO */
+
+.contact-card{
+
+display:flex;
+align-items:center;
+
+gap:18px;
+
+padding:20px;
+
+background:white;
+
+border-radius:22px;
+
+margin-bottom:20px;
+
+box-shadow:
+0 10px 30px rgba(0,0,0,.05);
+
+transition:.3s;
+}
+
+.contact-card:hover{
+
+transform:translateY(-5px);
+
+box-shadow:
+0 20px 40px rgba(0,0,0,.08);
+}
+
+.contact-icon{
+
+width:60px;
+height:60px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border-radius:18px;
+
+background:
+linear-gradient(
+135deg,
+#2563eb,
+#22d3ee
+);
+
+color:white;
+
+font-size:1.4rem;
+}
+
+.contact-card h4{
+
+font-weight:700;
+color:#111827;
+}
+
+.contact-card p{
+
+color:#6b7280;
+}
+
+/* CTA */
+
+.contact-cta{
+
+margin-top:30px;
+
+padding:30px;
+
+background:
+linear-gradient(
+135deg,
+#2563eb,
+#22d3ee
+);
+
+border-radius:24px;
+
+color:white;
+}
+
+.contact-cta h3{
+
+font-size:1.5rem;
+font-weight:700;
+
+margin-bottom:10px;
+}
+
+.contact-cta p{
+
+opacity:.9;
+line-height:1.7;
+margin-bottom:20px;
+}
+
+.contact-direct-btn{
+
+display:inline-block;
+
+padding:12px 24px;
+
+background:white;
+
+color:#2563eb;
+
+font-weight:600;
+
+border-radius:12px;
+
+transition:.3s;
+}
+
+.contact-direct-btn:hover{
+
+transform:translateY(-3px);
+}
+
+/* FORM */
+
+.contact-form-box{
+
+background:white;
+
+padding:35px;
+
+border-radius:28px;
+
+box-shadow:
+0 15px 40px rgba(0,0,0,.06);
+}
+
+.form-grid{
+
+display:grid;
+
+grid-template-columns:
+1fr 1fr;
+
+gap:20px;
+}
+
+.contact-form-box label{
+
+display:block;
+
+font-weight:600;
+
+margin-bottom:8px;
+
+color:#374151;
+}
+
+.contact-form-box input,
+.contact-form-box textarea{
+
+width:100%;
+
+padding:14px 18px;
+
+border:1px solid #e5e7eb;
+
+border-radius:14px;
+
+outline:none;
+
+transition:.3s;
+
+margin-bottom:20px;
+}
+
+.contact-form-box input:focus,
+.contact-form-box textarea:focus{
+
+border-color:#2563eb;
+
+box-shadow:
+0 0 0 4px rgba(37,99,235,.1);
+}
+
+.submit-btn{
+
+width:100%;
+
+padding:16px;
+
+border:none;
+
+border-radius:16px;
+
+background:
+linear-gradient(
+135deg,
+#2563eb,
+#22d3ee
+);
+
+color:white;
+
+font-weight:700;
+
+cursor:pointer;
+
+display:flex;
+justify-content:center;
+align-items:center;
+gap:10px;
+
+transition:.3s;
+}
+
+.submit-btn:hover{
+
+transform:translateY(-3px);
+
+box-shadow:
+0 15px 30px rgba(37,99,235,.25);
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.contact-wrapper{
+grid-template-columns:1fr;
+}
+
+.form-grid{
+grid-template-columns:1fr;
+}
+
+.contact-title{
+font-size:2rem;
+}
+
+}
+
+/* =========================
+   CONTACT MOBILE
+========================= */
+
+@media(max-width:768px){
+
+.contact-wrapper{
+
+grid-template-columns:1fr;
+}
+
+.contact-info{
+
+margin-bottom:30px;
+}
+
+}
+
+/* ==================================
+   FOOTER PREMIUM
+================================== */
+
+.footer-section{
+
+position:relative;
+
+overflow:hidden;
+
+padding:90px 0 30px;
+
+background:
+linear-gradient(
+135deg,
+#0f172a,
+#1e3a8a,
+#0ea5e9
+);
+
+color:white;
+}
+
+/* Background glow */
+
+.footer-bg{
+
+position:absolute;
+
+top:-200px;
+right:-150px;
+
+width:500px;
+height:500px;
+
+border-radius:50%;
+
+background:
+rgba(255,255,255,.08);
+
+filter:blur(120px);
+
+animation:
+footerGlow 12s ease-in-out infinite;
+}
+
+/* Logo */
+
+.footer-logo{
+
+font-size:2rem;
+
+font-weight:800;
+
+margin-bottom:20px;
+}
+
+.footer-logo span{
+
+color:#67e8f9;
+}
+
+.footer-text{
+
+color:
+rgba(255,255,255,.75);
+
+line-height:1.8;
+}
+
+/* Titles */
+
+.footer-title{
+
+font-size:1.1rem;
+
+font-weight:700;
+
+margin-bottom:20px;
+}
+
+/* Links */
+
+.footer-links{
+
+display:flex;
+
+flex-direction:column;
+
+gap:14px;
+}
+
+.footer-links a{
+
+color:
+rgba(255,255,255,.75);
+
+transition:.3s;
+}
+
+.footer-links a:hover{
+
+color:white;
+
+padding-left:6px;
+}
+
+/* Social */
+
+.footer-social{
+
+display:flex;
+
+gap:15px;
+
+margin-top:25px;
+}
+
+.footer-social a{
+
+width:48px;
+height:48px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border-radius:50%;
+
+background:
+rgba(255,255,255,.1);
+
+backdrop-filter:
+blur(10px);
+
+transition:.3s;
+}
+
+.footer-social a:hover{
+
+transform:
+translateY(-5px);
+
+background:
+rgba(255,255,255,.2);
+}
+
+/* Bottom */
+
+.footer-bottom{
+
+margin-top:60px;
+
+padding-top:25px;
+
+border-top:
+1px solid rgba(255,255,255,.15);
+
+display:flex;
+
+justify-content:space-between;
+
+flex-wrap:wrap;
+
+gap:15px;
+
+font-size:.9rem;
+
+color:
+rgba(255,255,255,.7);
+}
+
+/* Animation */
+
+@keyframes footerGlow{
+
+0%,100%{
+transform:
+translate(0,0);
+}
+
+50%{
+transform:
+translate(-30px,20px);
+}
+
+}
+
+
+/* =========================
+   FOOTER MOBILE
+========================= */
+
+@media(max-width:768px){
+
+.footer-bottom{
+
+flex-direction:column;
+
+text-align:center;
+}
+
+.footer-social{
+
+justify-content:center;
+}
+
+}
+
+/* =========================
+   PROGRESS BAR
+========================= */
+
+#progress-bar{
+position:fixed;
+top:0;
+left:0;
+
+height:4px;
+width:0%;
+
+z-index:99999;
+
+background:
+linear-gradient(
+90deg,
+#2563eb,
+#22d3ee
+);
+}
+
+
+/* =========================
+   WHATSAPP FLOATING
+========================= */
+
+.floating-wa{
+
+position:fixed;
+
+right:25px;
+bottom:25px;
+
+width:65px;
+height:65px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border-radius:50%;
+
+background:#25D366;
+
+color:white;
+
+font-size:30px;
+
+z-index:999;
+
+box-shadow:
+0 15px 35px rgba(0,0,0,.2);
+
+animation:
+waFloat 3s infinite ease-in-out;
+}
+
+.floating-wa:hover{
+transform:scale(1.08);
+}
+
+@keyframes waFloat{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-8px);
+}
+
+}
+
+/* FLOAT */
+
+@keyframes aboutFloat{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-12px);
+}
+
+}
+
+
+/* ===================================
+FINAL MOBILE FIX
+=================================== */
+
+@media (max-width:768px){
+
+/* HERO */
+
+.gradient-bg{
+min-height:auto;
+padding-top:110px;
+}
+
+.hero-title{
+font-size:3rem !important;
+line-height:1.1;
+text-align:center;
+}
+
+.hero-subtitle{
+font-size:1.6rem !important;
+text-align:center;
+}
+
+.hero-description{
+text-align:center;
+font-size:1rem;
+line-height:1.8;
+}
+
+.hero-buttons{
+flex-direction:column;
+align-items:center;
+}
+
+.hero-buttons a{
+width:100%;
+max-width:320px;
+}
+
+.hero-social{
+justify-content:center;
+}
+
+.hero-image{
+width:260px !important;
+height:260px !important;
+margin:40px auto 0;
+display:block;
+}
+
+/* HIDE FLOATING CARDS */
+
+.float-card,
+.float-card-delay,
+.float-card-slow,
+.about-floating-card,
+.about-badge{
+display:none !important;
+}
+
+/* ABOUT */
+
+.about-section{
+padding:80px 0;
+}
+
+.about-image-container{
+margin-bottom:50px;
+}
+
+
+.about-heading{
+font-size:2rem;
+text-align:center;
+}
+
+.about-text{
+text-align:center;
+font-size:1rem;
+}
+
+.about-skill-grid,
+.about-info-grid{
+grid-template-columns:1fr;
+}
+
+/* PORTFOLIO */
+
+.portfolio-section{
+padding:80px 0;
+}
+
+.portfolio-title{
+font-size:2rem;
+}
+
+.portfolio-card{
+margin-bottom:20px;
+}
+
+/* CONTACT */
+
+.contact-section{
+padding:80px 0;
+}
+
+.contact-wrapper{
+grid-template-columns:1fr;
+}
+
+.contact-form-box{
+padding:25px;
+}
+
+.form-grid{
+grid-template-columns:1fr;
+}
+
+/* FOOTER */
+
+.footer-section{
+padding:70px 0 20px;
+}
+
+.footer-bottom{
+flex-direction:column;
+text-align:center;
+}
+
+/* WHATSAPP */
+
+.floating-wa{
+
+opacity:0;
+visibility:hidden;
+
+right:20px;
+bottom:20px;
+
+width:58px;
+height:58px;
+
+transition:.4s;
+}
+
+.floating-wa.show{
+
+opacity:1;
+visibility:visible;
+}
+
+}
+
+/* =========================
+   PREMIUM TOAST
+========================= */
+
+.toast{
+
+position:fixed;
+
+top:100px;
+right:25px;
+
+display:flex;
+align-items:center;
+
+gap:15px;
+
+background:white;
+
+padding:18px 22px;
+
+border-radius:18px;
+
+box-shadow:
+0 20px 50px rgba(0,0,0,.12);
+
+z-index:9999;
+
+opacity:0;
+visibility:hidden;
+
+transform:translateX(50px);
+
+transition:.4s;
+}
+
+.toast.show{
+
+opacity:1;
+visibility:visible;
+
+transform:translateX(0);
+}
+
+.toast-icon{
+
+width:50px;
+height:50px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border-radius:50%;
+
+background:#22c55e;
+
+color:white;
+}
+
+.toast.error .toast-icon{
+
+background:#ef4444;
+}
+
+#toast-title{
+
+font-weight:700;
+
+color:#111827;
+}
+
+#toast-message{
+
+font-size:.9rem;
+
+color:#6b7280;
+}
+
+@media(max-width:768px){
+
+.toast{
+
+left:20px;
+right:20px;
+
+top:90px;
+}
+
+}
+
+
+#preloader{
+position:fixed;
+inset:0;
+background:white;
+z-index:99999;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+transition:.5s;
+}
+
+.loader{
+
+width:60px;
+height:60px;
+
+border:4px solid #e5e7eb;
+border-top:4px solid #2563eb;
+
+border-radius:50%;
+
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+
+100%{
+transform:rotate(360deg);
+}
+
+}
+
+
+/* =========================
+   HERO CLICK FIX
+========================= */
+
+.hero-buttons,
+.hero-social{
+    position:relative;
+    z-index:100;
+}
+
+.hero-buttons a,
+.hero-social a{
+    position:relative;
+    z-index:101;
+}
+
+.hero-pattern,
+.hero-circle,
+.particle{
+    pointer-events:none !important;
+}
+
+.gradient-bg::before,
+.gradient-bg::after{
+    pointer-events:none !important;
+}
+
+svg{
+    pointer-events:none;
+}
+
     </style>
+
+
   </head>
+
+<div id="preloader">
+  <div class="loader"></div>
+</div>
+
   <body class="bg-[#FEFEFE]">
-    <!-- Navbar -->
-    <nav class="fixed w-full bg-white shadow-sm z-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-16">
-          <!-- Logo -->
-          <div class="flex-shrink-0">
-            <span class="text-xl font-bold">Radity Bagus Prasetiyo</span>
-          </div>
 
-          <!-- Desktop Menu -->
-          <div class="hidden md:flex items-center space-x-8">
-            <a href="#home" class="text-gray-700 hover:text-gray-900">Home</a>
-            <a href="#about" class="text-gray-700 hover:text-gray-900">About</a>
-            <a href="#portfolio" class="text-gray-700 hover:text-gray-900"
-              >Portfolio</a
-            >
-            <a href="#contact" class="text-gray-700 hover:text-gray-900"
-              >Contact</a
-            >
-            <button
-              class="bg-[#E9F3FD] text-gray-800 px-4 py-2 rounded-md hover:bg-blue-100 transition duration-300"
-            >
-              Let's Talk
-            </button>
-          </div>
+    <div id="progress-bar"></div>
 
-          <!-- Mobile Menu Button -->
-          <button
-            id="menu-btn"
-            class="md:hidden text-gray-700 focus:outline-none"
-            aria-label="Toggle menu"
-          >
-            <i class="fas fa-bars text-2xl"></i>
-          </button>
-        </div>
+<nav id="navbar">
 
-        <!-- Mobile Menu Container -->
-        <div
-          id="mobile-menu"
-          class="mobile-menu absolute top-16 left-0 w-full bg-white shadow-lg z-40"
-        >
-          <div class="px-2 pt-2 pb-3 space-y-1 bg-white shadow-lg rounded-b-lg">
-            <a
-              href="#home"
-              class="block px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-md"
-              >Home</a
-            >
-            <a
-              href="#about"
-              class="block px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-md"
-              >About</a
-            >
-            <a
-              href="#portfolio"
-              class="block px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-md"
-              >Portfolio</a
-            >
-            <a
-              href="#contact"
-              class="block px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-md"
-              >Contact</a
-            >
-            <button
-              class="w-full text-left px-3 py-2 bg-[#E9F3FD] text-gray-800 rounded-md hover:bg-blue-100 transition duration-300"
-            >
-              Let's Talk
-            </button>
-          </div>
-        </div>
-      </div>
-    </nav>
+  <div class="nav-container">
+
+    <!-- Logo -->
+    <a href="#home" class="logo">
+      Raditya<span>.</span>
+    </a>
+
+    <!-- Desktop Menu -->
+    <div class="nav-menu">
+
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#portfolio" class="nav-link">Portfolio</a>
+      <a href="#contact" class="nav-link">Contact</a>
+
+    </div>
+
+    <!-- Desktop Button -->
+    <a href="#contact" class="nav-btn">
+      Let's Talk
+    </a>
+
+    <!-- Mobile Toggle -->
+    <button id="menu-btn" class="mobile-toggle">
+      <i class="fas fa-bars"></i>
+    </button>
+
+  </div>
+
+</nav>
+
+<!-- Mobile Menu -->
+
+<div id="mobile-menu" class="mobile-menu">
+
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#portfolio">Portfolio</a>
+  <a href="#contact">Contact</a>
+
+  <a href="#contact" class="mobile-talk-btn">
+    Let's Talk
+  </a>
+
+</div>
+
+<div id="mobile-menu" class="mobile-menu">
+
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#contact">Contact</a>
+
+    <a href="#contact" class="mobile-talk-btn">
+        Let's Talk
+    </a>
+
+</div>
+
 
     <!-- Hero Section -->
-    <section id="home">
-      <div class="py-20 bg-[#E9F3FD]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div
-            class="flex flex-col md:flex-row items-center justify-between gap-8"
-          >
-            <!-- Left Content -->
-            <div class="w-full md:w-1/2 text-center md:text-left">
-              <h1
-                class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4"
-              >
-                Hi, I'm Raditya
-              </h1>
-              <p class="text-lg md:text-xl text-gray-600 mb-6">
-                Web Developer, Cyber Security & Crypto Enthusiast
-              </p>
-              <button
-                class="bg-[#FEFEFE] text-gray-800 px-6 py-2 rounded-md hover:bg-blue-100 transition duration-300"
-              >
-                Download CV
-              </button>
-              <div class="flex justify-center md:justify-start space-x-6 mt-6">
-                <a
-                  href="#"
-                  class="text-gray-600 hover:text-gray-900 transition duration-300"
-                >
-                  <i class="fab fa-github text-2xl"></i>
-                </a>
-                <a
-                  href="#"
-                  class="text-gray-600 hover:text-gray-900 transition duration-300"
-                >
-                  <i class="fab fa-linkedin text-2xl"></i>
-                </a>
-                <a
-                  href="#"
-                  class="text-gray-600 hover:text-gray-900 transition duration-300"
-                >
-                  <i class="fab fa-instagram text-2xl"></i>
-                </a>
-              </div>
-            </div>
-
-            <!-- Right Content - Hero Image -->
-            <div class="w-full md:w-1/2 flex justify-center">
+    <section id="home" class="relative overflow-hidden">
+      <div class="gradient-bg">
+        <div class="hero-pattern"></div>
+<div class="hero-circle hero-circle-1"></div>
+<div class="hero-circle hero-circle-2"></div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+          <div class="grid lg:grid-cols-2 gap-16 items-center min-h-[100vh]">
+            <!-- LEFT -->
+            <div class="text-center lg:text-left pt-24 lg:pt-0">
               <div
-                class="bg-[#FEFEFE] rounded-full p-4 flex items-center justify-center"
+                class="inline-flex items-center gap-2 px-5 py-2 rounded-full glass text-white text-sm"
               >
-                <img
-                  src="image2.jpg"
-                  alt=""
-                  class="rounded-full w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-96 lg:h-96 object-cover"
-                />
-                <!-- <h1 class="absolute border border-blue-500">Foto saya</h1> -->
+                🚀 Available For Freelance Projects
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mt-12">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900">About Me</h2>
-        </div>
-        <div
-          class="flex flex-col-reverse md:flex-row items-center justify-between py-5"
-        >
-          <!-- Right Content - Hero Image -->
-          <div class="md:w-1/2 flex justify-center">
-            <div
-              class="bg-[#FEFEFE] rounded-full p-4 flex items-center justify-center"
-            >
-              <img
-                src="image.jpg"
-                alt="foto kamu"
-                class="rounded-full w-48 h-48 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-96 lg:h-96 object-cover"
-              />
-              <!-- <h1 class="absolute border border-blue-500">Raditya</h1> -->
-            </div>
-          </div>
+              <h1 class="hero-title">
+                Hi, I'm
+                <span class="text-cyan-200"> Raditya </span>
+              </h1>
 
-          <!-- right Content -->
-          <div class="md:w-1/2 text-center md:text-left mt-8 md:mt-0">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Headline
-            </h1>
-            <p class="text-justify w-[30rem] text-xl text-gray-600 mb-8">
-              Web developer multidisipliner dengan fokus pada keamanan siber dan
-              teknologi blockchain, menghadirkan solusi digital yang aman,
-              adaptif, dan visioner.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+              <h2 class="hero-subtitle">
+                <span id="typing"></span>
+              </h2>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="py-20 bg-[#E9F3FD]">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            My Portfolio
-          </h2>
-          <p class="text-gray-600 max-w-2xl mx-auto">
-            Web developer multidisipliner dengan fokus pada keamanan siber dan
-            teknologi blockchain, <br />
-            menghadirkan solusi digital yang aman, adaptif, dan visioner.
-          </p>
-        </div>
+              <p class="hero-description">
+                Saya membantu bisnis, UMKM, dan startup membangun website
+                modern, cepat, responsif, dan profesional untuk meningkatkan
+                kredibilitas serta pertumbuhan bisnis di era digital.
+              </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Portfolio Item 1 -->
-          <div
-            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300"
-          >
-            <img
-              src="project1.jpg"
-              alt="Project 1"
-              class="w-full px-5 py-2 h-48 object-cover"
-            />
-            <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2">Nama Project</h3>
-              <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet.</p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="px-3 py-1 bg-[#E9F3FD] text-sm rounded-full"
-                  >HTML</span
-                >
-                <span class="px-3 py-1 bg-[#E9F3FD] text-sm rounded-full"
-                  >Bootstrap</span
-                >
-                <span class="px-3 py-1 bg-[#E9F3FD] text-sm rounded-full"
-                  >Figma</span
-                >
-              </div>
-              <a href="https://tukang-in-aja.vercel.app/" class="text-blue-600 hover:text-blue-800 font-medium"
-                >View Project →</a
-              >
-            </div>
-          </div>
-
-          <!-- Portfolio Item 2 -->
-          <div
-            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300"
-          >
-            <img
-              src="project2.jpg"
-              alt="Project 2"
-              class="w-full px-5 py-2 h-48 object-cover"
-            />
-            <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2">Nama Project</h3>
-              <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet.</p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="px-3 py-1 bg-[#E9F3FD] text-sm rounded-full"
-                  >Laravel</span
-                >
-                <span class="px-3 py-1 bg-[#E9F3FD] text-sm rounded-full"
-                  >Bootstrap</span
-                >
-              </div>
-              <a href="https://sc-profil-bengkel-app.vercel.app/" class="text-blue-600 hover:text-blue-800 font-medium"
-                >View Project →</a
-              >
-            </div>
-          </div>
-
-          <!-- Portfolio Item 3 -->
-          <div
-            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300"
-          >
-            <img
-              src="project3.jpg"
-              alt="Project 3"
-              class="w-full px-5 py-2 h-48 object-cover"
-            />
-            <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2">Nama Project</h3>
-              <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet.</p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="px-3 py-1 bg-[#E9F3FD] text-sm rounded-full"
-                  >Laravel</span
-                >
-                <span class="px-3 py-1 bg-[#E9F3FD] text-sm rounded-full"
-                  >TailwindCSS</span
-                >
-              </div>
-              <a href="https://ukir-jepara-web.vercel.app/" class="text-blue-600 hover:text-blue-800 font-medium"
-                >View Project →</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Contact
-          </h2>
-          <p class="text-gray-600 max-w-2xl mx-auto">
-            Tertarik untuk berkolaborasi atau memiliki pertanyaan? Jangan ragu
-            untuk menghubungi saya.
-          </p>
-        </div>
-
-        <div class="max-w-3xl mx-auto">
-          <form id="contact-form" class="space-y-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label
-                  for="name"
-                  class="block text-sm font-medium text-gray-700 mb-1"
-                  >Name</label
-                >
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                  required
-                />
-              </div>
-              <div>
-                <label
-                  for="email"
-                  class="block text-sm font-medium text-gray-700 mb-1"
-                  >Email</label
-                >
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                  required
-                />
-              </div>
-            </div>
-            <div>
-              <label
-                for="subject"
-                class="block text-sm font-medium text-gray-700 mb-1"
-                >Subject</label
-              >
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                required
-              />
-            </div>
-            <div>
-              <label
-                for="message"
-                class="block text-sm font-medium text-gray-700 mb-1"
-                >Message</label
-              >
-              <textarea
-                id="message"
-                name="message"
-                rows="4"
-                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                required
-              ></textarea>
-            </div>
-            <div>
-              <!-- <button
-                type="submit"
-                class="w-full bg-[#E9F3FD] text-gray-800 px-6 py-3 rounded-md hover:bg-blue-100 transition duration-300"
-              >
-                Send Message
-              </button> -->
-
-              <button
-                type="submit"
-                id="submit-btn"
-                class="w-full bg-[#E9F3FD] text-gray-800 px-6 py-3 rounded-md hover:bg-blue-100 transition duration-300 flex items-center justify-center gap-2"
-              >
-                <span id="btn-text">Send Message</span>
-                <svg
-                  id="loading-spinner"
-                  class="hidden w-5 h-5 animate-spin text-gray-700"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    class="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    stroke-width="4"
-                  ></circle>
-                  <path
-                    class="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-                  ></path>
-                </svg>
-              </button>
-            </div>
-          </form>
-          <!-- Toast Notification -->
-          <div
-            id="toast"
-            class="fixed top-5 right-5 z-50 hidden max-w-sm rounded-lg bg-green-500 text-white px-6 py-4 shadow-lg transition"
-          >
-            <p id="toast-message" class="text-sm font-medium">
-              Message sent successfully!
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <!-- Logo & Description -->
-          <div class="col-span-1 md:col-span-2">
-            <h3 class="text-xl font-bold mb-4">Raditya Bagus Prasetiyo</h3>
-            <p class="text-gray-400 mb-4">
-              Saya menggabungkan presisi teknis, pemikiran strategis, serta
-              ketajaman analitis untuk menciptakan solusi digital yang adaptif,
-              <br />
-              aman, dan selaras dengan arus inovasi masa depan.
-            </p>
-            <div class="flex space-x-4">
-              <a
-                href="#"
-                class="text-gray-400 hover:text-white transition duration-300"
-              >
-                <i class="fab fa-github text-xl"></i>
-              </a>
-              <a
-                href="#"
-                class="text-gray-400 hover:text-white transition duration-300"
-              >
-                <i class="fab fa-linkedin text-xl"></i>
-              </a>
-              <a
-                href="#"
-                class="text-gray-400 hover:text-white transition duration-300"
-              >
-                <i class="fab fa-instagram text-xl"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Quick Links -->
-          <div>
-            <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
-            <ul class="space-y-2">
-              <li>
-                <a
-                  href="#home"
-                  class="text-gray-400 hover:text-white transition duration-300"
-                  >Home</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#about"
-                  class="text-gray-400 hover:text-white transition duration-300"
-                  >About</a
-                >
-              </li>
-              <li>
+              <div class="hero-buttons">
                 <a
                   href="#portfolio"
-                  class="text-gray-400 hover:text-white transition duration-300"
-                  >Portfolio</a
+                  class="bg-white text-blue-600 px-7 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition"
                 >
-              </li>
-              <li>
+                  View My Work
+                </a>
+
                 <a
                   href="#contact"
-                  class="text-gray-400 hover:text-white transition duration-300"
-                  >Contact</a
+                  class="border border-white text-white px-7 py-3 rounded-xl font-semibold hover:bg-white hover:text-blue-600 transition"
                 >
-              </li>
-            </ul>
-          </div>
+                  Contact Me
+                </a>
+              </div>
 
-          <!-- Contact Info -->
-          <div>
-            <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
-            <ul class="space-y-2">
-              <li class="flex items-center text-gray-400">
-                <i class="fas fa-envelope mr-2"></i>
-                <a
-                  href="mailto:contact@aldi.dev"
-                  class="hover:text-white transition duration-300"
-                  >businessraditya@gmail.com</a
-                >
-              </li>
-              <li class="flex items-center text-gray-400">
-                <i class="fas fa-phone mr-2"></i>
-                <a
-                  href="tel:+628123456789"
-                  class="hover:text-white transition duration-300"
-                  >+62 859-1264-69320</a
-                >
-              </li>
-              <li class="flex items-center text-gray-400">
-                <i class="fas fa-map-marker-alt mr-2"></i>
-                <span>Purwokerto, Indonesia</span>
-              </li>
-            </ul>
-          </div>
-        </div>
+              <div class="hero-social">
 
-        <div class="border-t border-gray-800 mt-8 pt-8 text-center">
-          <p class="text-gray-400">
-            &copy; 2025 radityabagus. All rights reserved.
-          </p>
+<a
+href="https://github.com/RadityaBagus112"
+target="_blank"
+class="social-btn github"
+>
+<i class="fab fa-github"></i>
+</a>
+
+<a
+href="https://www.instagram.com/rdtyaabgss_"
+target="_blank"
+class="social-btn instagram"
+>
+<i class="fab fa-instagram"></i>
+</a>
+
+<a
+href="https://linkedin.com"
+target="_blank"
+class="social-btn linkedin"
+>
+<i class="fab fa-linkedin-in"></i>
+</a>
+
+</div>
+            </div>
+
+
+            <!-- RIGHT -->
+            <div class="flex justify-center items-center">
+              <div class="relative">
+                <div
+                  class="absolute inset-0 bg-cyan-300 opacity-30 blur-[120px] rounded-full"
+                ></div>
+
+                <div class="particle particle-1"></div>
+                <div class="particle particle-2"></div>
+                <div class="particle particle-3"></div>
+
+                <img
+                  src="image2.jpg"
+                  loading="lazy"
+                  alt="Raditya"
+                  class="hero-image relative w-72 md:w-80 lg:w-[360px] rounded-full border-[10px] border-white shadow-2xl"
+                />
+
+                <!-- CARD 1 -->
+                <div
+                  class="hidden lg:flex absolute top-12 -right-24 bg-white rounded-2xl px-5 py-4 shadow-xl items-center gap-3 float-card"
+                >
+                  <i class="fas fa-code text-blue-500 text-2xl"></i>
+
+                  <div>
+                    <p class="font-semibold">Web Developer</p>
+                    <p class="text-sm text-gray-500">Frontend & Backend</p>
+                  </div>
+                </div>
+
+                <!-- CARD 2 -->
+                <div
+                  class="hidden lg:flex absolute bottom-16 -left-28 bg-white rounded-2xl px-5 py-4 shadow-xl items-center gap-3 float-card-delay"
+                >
+                  <i class="fas fa-shield-alt text-cyan-500 text-2xl"></i>
+
+                  <div>
+                    <p class="font-semibold">Cyber Security</p>
+                    <p class="text-sm text-gray-500">Enthusiast</p>
+                  </div>
+                </div>
+
+                <!-- CARD 3 -->
+                <div
+                  class="hidden lg:flex absolute bottom-20 -right-28 bg-white rounded-2xl px-5 py-4 shadow-xl items-center gap-3 float-card-slow"
+                >
+                  <i class="fas fa-rocket text-blue-600 text-2xl"></i>
+
+                  <div>
+                    <p class="font-semibold">Fast & Modern</p>
+                    <p class="text-sm text-gray-500">Solution</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </footer>
+
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+
+<svg
+viewBox="0 0 1440 320"
+preserveAspectRatio="none"
+class="block w-full h-[220px]"
+>
+
+<path
+fill="#ffffff"
+d="M0,256L60,261.3C120,267,240,277,360,266.7C480,256,600,224,720,224C840,224,960,256,1080,261.3C1200,267,1320,245,1380,234.7L1440,224L1440,320L0,320Z"
+></path>
+
+</svg>
+
+</div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+<section id="about" class="about-section">
+
+<div class="about-bg-circle about-bg-1"></div>
+<div class="about-bg-circle about-bg-2"></div>
+
+<div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+<div class="text-center mb-20">
+
+<span class="section-tag">
+ABOUT ME
+</span>
+
+<h2 class="section-title">
+Building
+<span>Modern</span>
+Digital Experiences
+</h2>
+
+<div class="section-line"></div>
+
+</div>
+
+<div class="grid lg:grid-cols-2 gap-20 items-center">
+
+<!-- LEFT -->
+<!-- LEFT IMAGE -->
+<div class="flex justify-center" data-aos="fade-right">
+
+  <div class="about-image-container">
+
+    <!-- Glow -->
+    <div class="about-glow"></div>
+
+    <!-- Floating Card 1 -->
+    <div class="about-floating-card about-card-left">
+      <i class="fas fa-code"></i>
+      <span>Frontend</span>
+    </div>
+
+    <!-- Floating Card 2 -->
+    <div class="about-floating-card about-card-right">
+      <i class="fas fa-shield-alt"></i>
+      <span>Security</span>
+    </div>
+
+    <!-- Floating Card 3 -->
+    <div class="about-floating-card about-card-top">
+      <i class="fas fa-mobile-alt"></i>
+      <span>Responsive</span>
+    </div>
+
+    <img
+      src="image2.jpg"
+      loading="lazy"
+      alt="Raditya"
+      class="about-image"
+    />
+
+  </div>
+
+</div>
+
+<!-- RIGHT -->
+<div data-aos="fade-left">
+
+<h3 class="about-heading">
+Helping Businesses Grow Through
+<span>Modern Websites</span>
+</h3>
+
+<p class="about-text">
+Saya adalah seorang Web Developer yang berfokus pada
+pembuatan website modern, responsif, cepat, dan user-friendly.
+Saya membantu UMKM, bisnis lokal, serta startup membangun
+kehadiran digital yang profesional dan terpercaya.
+</p>
+
+<p class="about-text">
+Bagi saya, website bukan hanya tampilan visual.
+Website adalah alat untuk membangun kredibilitas,
+meningkatkan kepercayaan pelanggan, dan membantu bisnis
+mendapatkan lebih banyak peluang di era digital.
+</p>
+
+<!-- SKILL GRID -->
+<div class="about-skill-grid">
+
+<div class="about-skill-card">
+<i class="fas fa-code"></i>
+<span>Frontend</span>
+</div>
+
+<div class="about-skill-card">
+<i class="fas fa-server"></i>
+<span>Backend</span>
+</div>
+
+<div class="about-skill-card">
+<i class="fas fa-mobile-alt"></i>
+<span>Responsive</span>
+</div>
+
+<div class="about-skill-card">
+<i class="fas fa-shield-alt"></i>
+<span>Security</span>
+</div>
+
+</div>
+
+<!-- INFO -->
+<div class="about-info-grid">
+
+<div class="about-info-card">
+<h4>Location</h4>
+<p>Jepara, Indonesia</p>
+</div>
+
+<div class="about-info-card">
+<h4>Focus</h4>
+<p>Web Development</p>
+</div>
+
+</div>
+
+<a
+href="#contact"
+class="about-btn"
+>
+Let's Work Together
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+   
+    <!-- PORTFOLIO -->
+<section id="portfolio" class="portfolio-section">
+
+  <div class="portfolio-bg portfolio-bg-1"></div>
+  <div class="portfolio-bg portfolio-bg-2"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+    <!-- Header -->
+    <div class="text-center mb-20" data-aos="fade-up">
+
+      <span class="portfolio-tag">
+        PORTFOLIO
+      </span>
+
+      <h2 class="portfolio-title">
+        Featured
+        <span>Projects</span>
+      </h2>
+
+      <p class="portfolio-subtitle">
+        Beberapa project yang telah saya kerjakan untuk membantu
+        bisnis membangun kehadiran digital yang modern,
+        profesional, dan responsif.
+      </p>
+
+      <div class="portfolio-line"></div>
+
+    </div>
+
+    <!-- GRID -->
+    <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
+
+      <!-- PROJECT 1 -->
+      <div class="portfolio-card" data-aos="fade-up">
+
+        <div class="portfolio-image">
+
+          <img
+            src="project1.jpg"
+            loading="lazy"
+            alt="TukangInAja"
+          />
+
+        </div>
+
+        <div class="portfolio-content">
+
+          <h3>
+            TukangInAja
+          </h3>
+
+          <p>
+            Platform pencarian jasa tukang yang membantu pelanggan
+            menemukan tenaga profesional dengan cepat,
+            mudah, dan terpercaya.
+          </p>
+
+          <div class="portfolio-tech">
+
+            <span>HTML</span>
+            <span>Bootstrap</span>
+            <span>Figma</span>
+
+          </div>
+
+          <a
+            href="https://tukang-in-aja.vercel.app/"
+            target="_blank"
+            class="portfolio-btn"
+          >
+            View Project
+            <i class="fas fa-arrow-right"></i>
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- PROJECT 2 -->
+      <div class="portfolio-card" data-aos="fade-up" data-aos-delay="150">
+
+        <div class="portfolio-image">
+
+          <img
+            src="project2.jpg"
+            loading="lazy"
+            alt="SC Bengkel"
+          />
+
+        </div>
+
+        <div class="portfolio-content">
+
+          <h3>
+            SC Bengkel
+          </h3>
+
+          <p>
+            Website profil bengkel modern yang dirancang
+            untuk meningkatkan kredibilitas bisnis dan
+            mempermudah pelanggan mendapatkan informasi.
+          </p>
+
+          <div class="portfolio-tech">
+
+            <span>Laravel</span>
+            <span>Bootstrap</span>
+
+          </div>
+
+          <a
+            href="https://sc-profil-bengkel-app.vercel.app/"
+            target="_blank"
+            class="portfolio-btn"
+          >
+            View Project
+            <i class="fas fa-arrow-right"></i>
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- PROJECT 3 -->
+      <div class="portfolio-card" data-aos="fade-up" data-aos-delay="300">
+
+        <div class="portfolio-image">
+
+          <img
+            src="project3.jpg"
+            loading="lazy"
+            alt="Ukir Jepara"
+          />
+
+        </div>
+
+        <div class="portfolio-content">
+
+          <h3>
+            Ukir Jepara
+          </h3>
+
+          <p>
+            Website katalog mebel Jepara yang menampilkan
+            produk secara elegan, responsif,
+            dan mudah diakses dari berbagai perangkat.
+          </p>
+
+          <div class="portfolio-tech">
+
+            <span>Laravel</span>
+            <span>TailwindCSS</span>
+
+          </div>
+
+          <a
+            href="https://ukir-jepara-web.vercel.app/"
+            target="_blank"
+            class="portfolio-btn"
+          >
+            View Project
+            <i class="fas fa-arrow-right"></i>
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  
+
+</section>
+
+
+    <!-- CONTACT -->
+<section id="contact" class="contact-section">
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+    <!-- HEADER -->
+    <div class="text-center mb-20" data-aos="fade-up">
+
+      <span class="contact-tag">
+        CONTACT
+      </span>
+
+      <h2 class="contact-title">
+        Let's Build Something
+        <span>Together</span>
+      </h2>
+
+      <p class="contact-subtitle">
+        Punya ide project, website bisnis, landing page,
+        atau aplikasi web? Mari diskusikan kebutuhan Anda.
+      </p>
+
+      <div class="contact-line"></div>
+
+    </div>
+
+    <!-- CONTENT -->
+    <div class="contact-wrapper">
+
+      <!-- LEFT -->
+      <div class="contact-info" data-aos="fade-right">
+
+        <div class="contact-card">
+
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+
+          <div>
+            <h4>Email</h4>
+            <p>businessraditya@gmail.com</p>
+          </div>
+
+        </div>
+
+        <div class="contact-card">
+
+          <div class="contact-icon">
+            <i class="fab fa-instagram"></i>
+          </div>
+
+          <div>
+            <h4>Instagram</h4>
+            <p>@rdtyaabgss_</p>
+          </div>
+
+        </div>
+
+        <div class="contact-card">
+
+          <div class="contact-icon">
+            <i class="fas fa-location-dot"></i>
+          </div>
+
+          <div>
+            <h4>Location</h4>
+            <p>Banyumas, Indonesia</p>
+          </div>
+
+        </div>
+
+        <div class="contact-cta">
+
+          <h3>
+            Ready To Work Together?
+          </h3>
+
+          <p>
+            Saya siap membantu Anda membangun website
+            yang modern, cepat, dan profesional.
+          </p>
+
+          <a
+            href="mailto:businessraditya@gmail.com"
+            class="contact-direct-btn"
+          >
+            Contact Me
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT -->
+      <div
+        class="contact-form-box"
+        data-aos="fade-left"
+      >
+
+        <form id="contact-form">
+
+  <div class="form-grid">
+
+    <div>
+
+      <label>Name</label>
+
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+      />
+
+    </div>
+
+    <div>
+
+      <label>Email</label>
+
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+      />
+
+    </div>
+
+  </div>
+
+  <div>
+
+    <label>Subject</label>
+
+    <input
+      type="text"
+      id="subject"
+      name="subject"
+      required
+    />
+
+  </div>
+
+  <div>
+
+    <label>Message</label>
+
+    <textarea
+      rows="6"
+      id="message"
+      name="message"
+      required
+    ></textarea>
+
+  </div>
+
+  <button
+    type="submit"
+    id="submit-btn"
+    class="submit-btn"
+  >
+
+    <span id="btn-text">
+      Send Message
+    </span>
+
+    <svg
+      id="loading-spinner"
+      class="hidden w-5 h-5 animate-spin"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <circle
+        class="opacity-25"
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        stroke-width="4"
+      ></circle>
+
+      <path
+        class="opacity-75"
+        fill="currentColor"
+        d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+      ></path>
+
+    </svg>
+
+  </button>
+
+</form>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+    <footer class="footer-section">
+
+<div class="footer-bg"></div>
+
+<div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+
+<!-- Brand -->
+
+<div>
+
+<h3 class="footer-logo">
+Raditya<span>.</span>
+</h3>
+
+<p class="footer-text">
+Web Developer & Digital Solution Builder yang membantu bisnis berkembang melalui website modern, cepat, dan profesional.
+</p>
+
+<div class="footer-social">
+
+<a href="https://github.com/RadityaBagus112" target="_blank">
+<i class="fab fa-github"></i>
+</a>
+
+<a href="https://instagram.com/rdtyaabgss_" target="_blank">
+<i class="fab fa-instagram"></i>
+</a>
+
+<a href="#">
+<i class="fab fa-linkedin-in"></i>
+</a>
+
+</div>
+
+</div>
+
+<!-- Quick Links -->
+
+<div>
+
+<h4 class="footer-title">
+Quick Links
+</h4>
+
+<ul class="footer-links">
+
+<li><a href="#home">Home</a></li>
+
+<li><a href="#about">About</a></li>
+
+<li><a href="#portfolio">Portfolio</a></li>
+
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+</div>
+
+<!-- Services -->
+
+<div>
+
+<h4 class="footer-title">
+Services
+</h4>
+
+<ul class="footer-links">
+
+<li>Website Development</li>
+
+<li>Landing Page</li>
+
+<li>UI/UX Design</li>
+
+<li>Website Maintenance</li>
+
+</ul>
+
+</div>
+
+<!-- Contact -->
+
+<div>
+
+<h4 class="footer-title">
+Contact
+</h4>
+
+<ul class="footer-links">
+
+<li>
+📧 businessraditya@gmail.com
+</li>
+
+<li>
+📍 Banyumas, Indonesia
+</li>
+
+<li>
+💻 Freelance Available
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<!-- Bottom -->
+
+<div class="footer-bottom">
+
+<p>
+© 2026 Raditya. All rights reserved.
+</p>
+
+<p>
+Built with using HTML, Tailwind & JavaScript
+</p>
+
+</div>
+
+</div>
+
+</footer>
 
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
     <script>
       // Previous JavaScript code for mobile menu
       document.addEventListener('DOMContentLoaded', function () {
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        let isMenuOpen = false;
 
-        // Toggle menu function
-        function toggleMenu() {
-          isMenuOpen = !isMenuOpen;
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
 
-          // Update icon
-          menuBtn.innerHTML = isMenuOpen
-            ? '<i class="fas fa-times text-2xl"></i>'
-            : '<i class="fas fa-bars text-2xl"></i>';
+  let isMenuOpen = false;
 
-          // Toggle menu visibility with animation
-          if (isMenuOpen) {
-            mobileMenu.classList.add('active');
-          } else {
-            mobileMenu.classList.remove('active');
-          }
-        }
+  // Toggle menu function
+  function toggleMenu() {
 
-        // Click event for menu button
-        menuBtn.addEventListener('click', function (e) {
-          e.stopPropagation();
-          toggleMenu();
-        });
+    isMenuOpen = !isMenuOpen;
 
-        // Close menu when clicking on a menu item
-        document.addEventListener('click', (e) => {
-          if (
-            isMenuOpen &&
-            !mobileMenu.contains(e.target) &&
-            !menuBtn.contains(e.target)
-          ) {
-            isMenuOpen = false;
-            mobileMenu.classList.remove('active');
-            menuBtn.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
-          }
-        });
+    menuBtn.innerHTML = isMenuOpen
+      ? '<i class="fas fa-times text-2xl"></i>'
+      : '<i class="fas fa-bars text-2xl"></i>';
 
-        // Close menu when clicking outside
-        document.addEventListener('click', function (e) {
-          if (
-            isMenuOpen &&
-            !mobileMenu.contains(e.target) &&
-            !menuBtn.contains(e.target)
-          ) {
-            toggleMenu();
-          }
-        });
+    mobileMenu.classList.toggle('active');
 
-        // Prevent menu from closing when clicking inside
-        mobileMenu.addEventListener('click', function (e) {
-          e.stopPropagation();
-        });
+  }
 
-        // Handle window resize
-        window.addEventListener('resize', function () {
-          if (window.innerWidth >= 768 && isMenuOpen) {
-            // 768px is the md breakpoint in Tailwind
-            toggleMenu();
-          }
-        });
-      });
+  // Click hamburger
+  menuBtn.addEventListener('click', function (e) {
+
+    e.stopPropagation();
+
+    toggleMenu();
+
+  });
+
+  // Tutup menu saat klik link
+  mobileMenu.querySelectorAll('a').forEach(link => {
+
+    link.addEventListener('click', () => {
+
+      if(isMenuOpen){
+
+        toggleMenu();
+
+      }
+
+    });
+
+  });
+
+  // Close menu ketika klik luar
+  document.addEventListener('click', function (e) {
+
+    if (
+      isMenuOpen &&
+      !mobileMenu.contains(e.target) &&
+      !menuBtn.contains(e.target)
+    ) {
+
+      toggleMenu();
+
+    }
+
+  });
+
+  // Prevent menu close saat klik dalam menu
+  mobileMenu.addEventListener('click', function (e) {
+
+    e.stopPropagation();
+
+  });
+
+  // Reset saat resize desktop
+  window.addEventListener('resize', function () {
+
+    if(window.innerWidth >= 768 && isMenuOpen){
+
+      toggleMenu();
+
+    }
+
+  });
+
+});
 
       // Form submission handling
 
@@ -616,9 +3488,6 @@
       const btn = document.getElementById('submit-btn');
       const btnText = document.getElementById('btn-text');
       const spinner = document.getElementById('loading-spinner');
-
-      const toast = document.getElementById('toast');
-      const toastMessage = document.getElementById('toast-message');
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -652,18 +3521,261 @@
           });
       });
 
-      function showToast(message, type) {
-        toastMessage.textContent = message;
+      function showToast(message, type){
 
-        toast.classList.remove('hidden');
-        toast.classList.remove('bg-green-500', 'bg-red-500');
+const toast =
+document.getElementById("toast");
 
-        toast.classList.add(type === 'success' ? 'bg-green-500' : 'bg-red-500');
+const title =
+document.getElementById("toast-title");
+
+const msg =
+document.getElementById("toast-message");
+
+const icon =
+document.getElementById("toast-icon");
+
+msg.textContent = message;
+
+toast.classList.remove("error");
+
+if(type === "success"){
+
+title.textContent = "Success";
+
+icon.className =
+"fas fa-check";
+
+}else{
+
+title.textContent = "Error";
+
+icon.className =
+"fas fa-times";
+
+toast.classList.add("error");
+
+}
+
+toast.classList.add("show");
+
+setTimeout(()=>{
+
+toast.classList.remove("show");
+
+},3000);
+
+}
+
+      const texts = [
+        'Web Developer',
+        'Digital Solution Builder',
+        'Cyber Security Enthusiast',
+      ];
+
+      let textIndex = 0;
+      const typingElement = document.getElementById('typing');
+
+      function changeText() {
+        typingElement.style.opacity = '0';
 
         setTimeout(() => {
-          toast.classList.add('hidden');
-        }, 3000);
+          typingElement.textContent = texts[textIndex];
+          typingElement.style.opacity = '1';
+
+          textIndex = (textIndex + 1) % texts.length;
+        }, 300);
       }
+
+      typingElement.textContent = texts[0];
+
+      setInterval(changeText, 3000);
+
+window.addEventListener("scroll",()=>{
+
+const winScroll=
+document.documentElement.scrollTop;
+
+const height=
+document.documentElement.scrollHeight-
+document.documentElement.clientHeight;
+
+const scrolled=
+(winScroll/height)*100;
+
+document.getElementById("progress-bar").style.width=
+scrolled+"%";
+
+});
+
+
     </script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+      AOS.init({
+        duration: 1000,
+        once: true,
+      });
+    </script>
+
+    <script>
+
+window.addEventListener("scroll",()=>{
+
+const navbar =
+document.getElementById("navbar");
+
+if(window.scrollY > 50){
+
+navbar.classList.add(
+"navbar-scrolled"
+);
+
+}else{
+
+navbar.classList.remove(
+"navbar-scrolled"
+);
+
+}
+
+});
+
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-link");
+
+window.addEventListener("scroll", () => {
+
+let current = "";
+
+sections.forEach(section => {
+
+const sectionTop =
+section.offsetTop - 250;
+
+const sectionHeight =
+section.offsetHeight;
+
+if(window.scrollY >= sectionTop){
+
+current =
+section.getAttribute("id");
+
+}
+
+});
+
+navLinks.forEach(link => {
+
+link.classList.remove("active");
+
+if(
+link.getAttribute("href")
+=== "#" + current
+){
+
+link.classList.add("active");
+
+}
+
+});
+
+});
+
+</script>
+
+    <a
+href="https://wa.me/62859126469320"
+class="floating-wa"
+target="_blank"
+>
+
+<i class="fab fa-whatsapp"></i>
+
+</a>
+
+
+<script>
+
+const waBtn =
+document.querySelector(".floating-wa");
+
+window.addEventListener("scroll",()=>{
+
+const contact =
+document.getElementById("contact");
+
+const trigger =
+contact.offsetTop - 500;
+
+if(window.scrollY > trigger){
+
+waBtn.classList.add("show");
+
+}else{
+
+waBtn.classList.remove("show");
+
+}
+
+});
+
+
+window.addEventListener("load",()=>{
+
+const preloader =
+document.getElementById("preloader");
+
+preloader.style.opacity="0";
+
+setTimeout(()=>{
+
+preloader.style.display="none";
+
+},500);
+
+});
+</script>
+
+
+<div id="toast" class="toast">
+
+<div class="toast-icon">
+    <i id="toast-icon" class="fas fa-check"></i>
+</div>
+
+<div>
+
+    <h4 id="toast-title">
+        Success
+    </h4>
+
+    <p id="toast-message">
+        Message sent successfully
+    </p>
+
+</div>
+</div>
+
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Person",
+  "name":"Raditya Bagus Prasetiyo",
+  "jobTitle":"Web Developer",
+  "description":"Web Developer yang berfokus pada pengembangan website modern, responsif, dan profesional.",
+  "url":"https://my-portfolio-one-livid-96.vercel.app/",
+  "image":"https://my-portfolio-one-livid-96.vercel.app/image2.jpg",
+  "sameAs":[
+    "https://github.com/RadityaBagus112",
+    "https://www.instagram.com/rdtyaabgss_/"
+  ]
+}
+</script>
+
   </body>
 </html>
