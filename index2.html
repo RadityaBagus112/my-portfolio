@@ -943,6 +943,14 @@ transform:translateY(0);
     justify-content:center;
   }
 
+  .hero-pattern{
+    display:none;
+}
+
+.hero-circle{
+    display:none;
+}
+
 }
 
 
@@ -2526,6 +2534,24 @@ svg{
 #home svg{
     display:block;
     margin-bottom:-4px;
+}
+
+/* =========================
+   MOBILE OVERFLOW FIX
+========================= */
+
+html,
+body{
+    overflow-x:hidden;
+    width:100%;
+}
+
+#home{
+    overflow:hidden;
+}
+
+.gradient-bg{
+    overflow:hidden;
 }
 
     </style>
